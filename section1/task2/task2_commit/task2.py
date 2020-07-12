@@ -2,8 +2,12 @@ from binance.client import Client
 import pandas as pd
 import datetime
 
+with open("./binance_api.txt") as f:
+    file = f.read()
+key = file.split(',')[0]
+secret = file.split(',')[1]
 
-client = Client('wtghA8np3ya8wxPql2z76afFiEjiMhMbYyxFRd7xEf8j5uO2qRg3AAKs6Cvk9POQ','JCdvfyvef1dy9j3TfHJkeQJuDmxgZ0Wfc92O6GaTiyBh5hMfDlYDVndjpT2ryEZK')
+client = Client(api_key= key,api_secret= secret)
 
 #Klines
 klines = client.get_historical_klines("BTCUSDT", Client.KLINE_INTERVAL_1DAY, "1 Jan, 2020")
